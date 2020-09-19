@@ -1,0 +1,7 @@
+venv*
+.idea*
+config.json
+discord.json
+*.jpg
+last.txt
+*.log

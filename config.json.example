@@ -1,0 +1,15 @@
+{
+  "twitter_consumer_key": "<token>",
+  "twitter_consumer_secret": "<key>",
+  "twitter_access_token": "<token>",
+  "twitter_access_secret": "<key>",
+  "twitter_base_url": "https://api.twitter.com/",
+  "twitter_api_version": "1.1/",
+  "twitter_api_uri": "statuses/user_timeline.json?",
+  "twitter_search_args": "user_id={0}&include_rts={1}&exclude_replies={2}&tweet_mode=extended&count=200&since_id={3}",
+  "search_user": 43064490,
+  "search_show_retweets": false,
+  "search_hide_replies": true,
+  "hashtag_search": "COVID19VicData",
+  "body_exclude": "Data Dashboard"
+}

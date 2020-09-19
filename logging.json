@@ -1,0 +1,8 @@
+{
+  "console_logger" : true,
+  "console_log_level" : "DEBUG",
+  "log_path": "covid_bot.log",
+  "log_level": "INFO",
+  "log_format": "%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s",
+  "date_format": "%Y-%m-%d %H:%M:%S"
+}

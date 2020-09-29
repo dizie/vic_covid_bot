@@ -70,9 +70,14 @@ def process_last(ident=None):
 
 
 def load_config(config_file="config.json"):
+    if path.exists('logging.json'):
+        get_logger()
+    check_for_conf()
     with open(config_file, 'r') as f:
         global config
         config = json.load(f)
+
+    process_last()
 
 
 def build_query():
@@ -96,8 +101,12 @@ def get_payload():
 def parse_payload():
     for e in get_payload():
         op = objectpath.Tree(e)
-        if config['hashtag_search'] in str(op.execute('$.entities.hashtags')) and config['body_exclude'] not in str(op.execute('$.full_text')):
-            return op.execute('$.id'), op.execute('$.full_text'), op.execute('$.entities.media[0].media_url')
+        hashtags = str(op.execute('$.entities.hashtags'))
+        full_body = str(op.execute('$.full_text')).replace("&amp;", "&")
+        if config['hashtag_search'] in hashtags \
+                and config['body_filter'] in full_body \
+                and config['body_exclude'] not in full_body:
+            return op.execute('$.id'), full_body, op.execute('$.entities.media[0].media_url')
 
 
 def download_image(url, ident):
@@ -112,11 +121,7 @@ def download_image(url, ident):
 
 
 def main():
-    if path.exists('logging.json'):
-        get_logger()
-    check_for_conf()
     load_config()
-    process_last()
     try:
         tweet_id, tweet_body, tweet_image = parse_payload()
         if logger is not None:

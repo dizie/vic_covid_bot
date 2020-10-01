@@ -103,7 +103,7 @@ def parse_payload():
         op = objectpath.Tree(e)
         hashtags = str(op.execute('$.entities.hashtags'))
         full_body = str(op.execute('$.full_text')).replace("&amp;", "&")
-        if config['hashtag_search'] in hashtags \
+        if any(hashtag in hashtags for hashtag in config['hashtag_search']) \
                 and config['body_filter'] in full_body \
                 and config['body_exclude'] not in full_body:
             return op.execute('$.id'), full_body, op.execute('$.entities.media[0].media_url')

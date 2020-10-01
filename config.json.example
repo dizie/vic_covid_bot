@@ -10,7 +10,7 @@
   "search_user": 43064490,
   "search_show_retweets": false,
   "search_hide_replies": true,
-  "hashtag_search": "COVID19VicData",
+  "hashtag_search": ["COVID19VicData", "COVID19Vic"],
   "body_filter": "new case",
   "body_exclude": "Data Dashboard"
 }

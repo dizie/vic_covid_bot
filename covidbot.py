@@ -62,7 +62,7 @@ def process_last(ident=None):
         try:
             with open('last.txt', 'r') as f:
                 last_id = int(f.read())
-        except FileNotFoundError:
+        except (FileNotFoundError, ValueError):
             last_id = 1
     else:
         with open('last.txt', 'w') as f:
